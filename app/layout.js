@@ -1,5 +1,6 @@
 import { Manrope } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -9,8 +10,8 @@ const manrope = Manrope({
 });
 
 export const metadata = {
-  title: "Bold Core LLC | Дижитал бүтээгдэхүүн хөгжүүлэлт",
-  description: "Bold Core LLC нь Монгол зах зээлд зориулсан мобайл апп, backend систем, бүтээгдэхүүний интерфэйс хөгжүүлдэг студи юм.",
+  title: "Bold Core LLC | Digital Product Development",
+  description: "Bold Core LLC builds mobile apps, backend systems, and product interfaces for the Mongolian market.",
   icons: {
     icon: "/favicon.png",
     apple: "/apple-touch-icon.png",
@@ -22,8 +23,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="mn" className={manrope.variable}>
-      <body>{children}</body>
+    <html lang="en" className={manrope.variable}>
+      <body>
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }

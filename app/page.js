@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
+  const { t, language, switchLanguage } = useLanguage();
+
   return (
     <div className="shell">
       <div className="orb orb-one" />
@@ -8,19 +13,26 @@ export default function Home() {
 
       <header className="site-header">
         <div className="container site-header-inner">
-          <a className="brand" href="#top" aria-label="Bold Core LLC нүүр хуудас">
-            <Image className="brand-mark" src="/yavii-logo.png" alt="Bold Core LLC одоогийн лого" width={56} height={56} />
+          <a className="brand" href="#top" aria-label="Bold Core LLC">
+            <Image className="brand-mark" src="/yavii-logo.png" alt="Bold Core LLC logo" width={56} height={56} />
             <div className="brand-copy">
               <div className="eyebrow">Bold Core LLC</div>
-              <p className="brand-title">Дижитал бүтээгдэхүүн хөгжүүлэлт</p>
-              <p className="brand-subtitle">Одоогийн брэнд тэмдэг нь Yavii логогоор явж байна</p>
+              <p className="brand-title">{t("Digital product development")}</p>
+              <p className="brand-subtitle">{t("Current brand mark is running on Yavii logo")}</p>
             </div>
           </a>
-          <nav className="nav" aria-label="Үндсэн цэс">
-            <a href="#about">Танилцуулга</a>
-            <a href="#work">Ажлууд</a>
-            <a href="#process">Процесс</a>
-            <a href="#contact">Холбоо барих</a>
+          <nav className="nav" aria-label="Main navigation">
+            <a href="#about">{t("About")}</a>
+            <a href="#work">{t("Work")}</a>
+            <a href="#process">{t("Process")}</a>
+            <a href="#contact">{t("Contact")}</a>
+            <button
+              onClick={() => switchLanguage(language === "en" ? "mn" : "en")}
+              className="lang-toggle"
+              aria-label="Toggle language"
+            >
+              {language === "en" ? "MN" : "EN"}
+            </button>
           </nav>
         </div>
       </header>
@@ -29,49 +41,47 @@ export default function Home() {
         <section className="hero">
           <div className="container hero-grid">
             <article className="hero-card">
-              <div className="eyebrow">Бүтээгдэхүүн төвтэй студи</div>
-              <h1>Bold Core LLC брэнд, код, бүтээгдэхүүнийг нэг дороос босгоно.</h1>
+              <div className="eyebrow">{t("Product-centered studio")}</div>
+              <h1>{t("Bold Core LLC builds brand, code, and product from one place.")}</h1>
               <p className="hero-lead">
-                Bold Core LLC нь санааг зөвхөн гоё танилцуулга биш, бодит ажилладаг бүтээгдэхүүн болгодог.
-                Мобайл апп, backend систем, хэрэглэгчийн урсгал, реалтайм ажиллагаа, нэвтрэлт,
-                төлбөрийн логик, удирдлагын бүтэц гээд хэрэглээнд ойр бүх давхаргыг нэг цул шийдэл болгон хөгжүүлж байна.
+                {t("Bold Core LLC turns ideas into real working products, not just pretty presentations. Mobile apps, backend systems, user flows, realtime operations, auth, payment logic, admin structure — every layer close to real use, built as one complete solution.")}
               </p>
               <div className="hero-actions">
-                <a className="btn btn-primary" href="#work">Хийсэн ажлуудыг үзэх</a>
-                <a className="btn btn-secondary" href="mailto:bold.core.soft@gmail.com">Имэйлээр холбогдох</a>
+                <a className="btn btn-primary" href="#work">{t("View work")}</a>
+                <a className="btn btn-secondary" href="mailto:bold.core.soft@gmail.com">{t("Email us")}</a>
               </div>
               <div className="hero-metrics">
                 <div className="metric">
                   <strong>2</strong>
-                  <span>Нэг бүтээгдэхүүний мобайл болон backend хоёр цөмийг бүрэн босгосон туршлага</span>
+                  <span>{t("Full experience building both mobile and backend cores of a product from scratch")}</span>
                 </div>
                 <div className="metric">
                   <strong>Real-time</strong>
-                  <span>Мессеж, мэдэгдэл, төлөвийн урсгалтай ажиллагаанд төвлөрсөн хөгжүүлэлт</span>
+                  <span>{t("Development focused on message, notification, and state flow with realtime operations")}</span>
                 </div>
                 <div className="metric">
                   <strong>MN</strong>
-                  <span>Монгол хэрэглэгчийн зан төлөв, хэл, хэрэглээний орчинд тааруулсан бүтээгдэхүүн</span>
+                  <span>{t("Products tailored to Mongolian user behavior, language, and usage context")}</span>
                 </div>
               </div>
             </article>
 
             <aside className="hero-side hero-card">
               <div className="logo-frame">
-                <Image src="/yavii-logo.png" alt="Yavii логог ашигласан Bold Core LLC визуал" width={400} height={400} priority sizes="(max-width: 1024px) 90vw, 380px" />
+                <Image src="/yavii-logo.png" alt="Bold Core LLC visual using Yavii logo" width={400} height={400} priority sizes="(max-width: 1024px) 90vw, 380px" />
               </div>
               <div className="side-note">
                 <div className="side-note-item">
-                  <strong>Одоогийн фокус</strong>
-                  <p>Хурдан гарах MVP биш, урт хугацаанд ажиллах логик бүтэцтэй бүтээгдэхүүн хийх.</p>
+                  <strong>{t("Current focus")}</strong>
+                  <p>{t("Not a fast MVP, but a product with logical structure that works long-term.")}</p>
                 </div>
                 <div className="side-note-item">
-                  <strong>Хандлага</strong>
-                  <p>Интерфэйс, backend, өгөгдлийн урсгал, хэрэглэгчийн ойлголт бүгд нэг систем гэж хардаг.</p>
+                  <strong>{t("Approach")}</strong>
+                  <p>{t("Interface, backend, data flow, user understanding — all viewed as one system.")}</p>
                 </div>
                 <div className="side-note-item">
-                  <strong>Брэндийн суурь</strong>
-                  <p>Одоогоор Yavii логог компанийн тэмдэг болгон ашиглаж байгаа ч дараагийн шатанд өөрийн брэндийн систем рүү тэлэх боломжтой.</p>
+                  <strong>{t("Brand foundation")}</strong>
+                  <p>{t("Currently using the Yavii logo as the company mark, with the option to expand into its own brand system at the next stage.")}</p>
                 </div>
               </div>
             </aside>
@@ -82,29 +92,26 @@ export default function Home() {
           <div className="container">
             <div className="section-head">
               <div>
-                <div className="eyebrow">Юу хийдэг вэ</div>
-                <h2>Санаанаас эхлээд хэрэглэгч хүрэх хүртэл.</h2>
+                <div className="eyebrow">{t("What we do")}</div>
+                <h2>{t("From idea to user.")}</h2>
               </div>
-              <p>
-                Bold Core LLC нь зөвхөн код бичихгүй. Бүтээгдэхүүний урсгал, бизнесийн логик,
-                хэрэглэгчийн харилцаа, ажиллагааны найдвартай байдал, өсөхөд бэлэн архитектурыг хамтад нь шийддэг.
-              </p>
+              <p>{t("Bold Core LLC doesn't just write code. It solves product flow, business logic, user interaction, operational reliability, and growth-ready architecture together.")}</p>
             </div>
             <div className="capability-grid">
               <article className="panel">
                 <div className="panel-number">01</div>
-                <h3>Мобайл бүтээгдэхүүн</h3>
-                <p>Expo дээр суурилсан React Native апп, олон дэлгэцтэй урсгал, auth, төлөвийн удирдлага, push мэдэгдэл, олон хэлний дэмжлэгтэй хэрэглээ бүтээнэ.</p>
+                <h3>{t("Mobile product")}</h3>
+                <p>{t("Expo-based React Native apps — multi-screen flows, auth, state management, push notifications, multi-language support.")}</p>
               </article>
               <article className="panel">
                 <div className="panel-number">02</div>
-                <h3>Backend систем</h3>
-                <p>API, өгөгдлийн бүтэц, realtime socket, файл upload, эрхийн шалгалт, rate limit, cron ажил, notification pipeline зэрэг арын цөмийг цэгцтэй босгоно.</p>
+                <h3>{t("Backend system")}</h3>
+                <p>{t("API, data structures, realtime socket, file upload, permission checks, rate limiting, cron jobs, notification pipeline — a clean backend core.")}</p>
               </article>
               <article className="panel">
                 <div className="panel-number">03</div>
-                <h3>Бүтээгдэхүүний туршлага</h3>
-                <p>Хэрэглэгч хаана эргэлзэх, ямар товч дарах, ямар мэдээлэл эхэнд харагдах ёстойг интерфэйс, текст, дарааллын түвшинд бодож шийднэ.</p>
+                <h3>{t("Product experience")}</h3>
+                <p>{t("Where users hesitate, which button they tap, what information should appear first — decided at the interface, copy, and sequence level.")}</p>
               </article>
             </div>
           </div>
@@ -114,52 +121,49 @@ export default function Home() {
           <div className="container">
             <div className="section-head">
               <div>
-                <div className="eyebrow">Хийсэн ажил</div>
-                <h2>Одоогоор онцлох гол ажил нь Yavii экосистем.</h2>
+                <div className="eyebrow">{t("Work done")}</div>
+                <h2>{t("The main featured work right now is the Yavii ecosystem.")}</h2>
               </div>
-              <p>
-                Нэг аппын цаана зөвхөн дэлгэц биш, жолооч-зорчигчийн харилцаа, аяллын урсгал,
-                захиалга, баталгаажуулалт, рейтинг, wallet, realtime мессежийн цогц систем ажиллаж байна.
-              </p>
+              <p>{t("Behind one app — not just screens, but a full system: driver-passenger interaction, trip flow, booking, confirmation, rating, wallet, and realtime messaging.")}</p>
             </div>
             <div className="projects">
               <article className="project-card">
                 <div className="project-top">
                   <div className="project-brand">
-                    <Image src="/yavii-logo.png" alt="Yavii апп лого" width={68} height={68} />
+                    <Image src="/yavii-logo.png" alt="Yavii app logo" width={68} height={68} />
                     <div>
-                      <div className="eyebrow">Онцлох төсөл</div>
-                      <h3>Yavii мобайл апп</h3>
+                      <div className="eyebrow">{t("Featured project")}</div>
+                      <h3>{t("Yavii mobile app")}</h3>
                     </div>
                   </div>
-                  <span className="tag">Мобайл</span>
+                  <span className="tag">{t("Mobile")}</span>
                 </div>
-                <p>Монголын хот хоорондын зорчих хэрэглээнд зориулсан мобайл апп. Жолооч аялал үүсгэж, зорчигч суудал хайж, хүсэлт илгээж, баталгаажуулалт авч, аяллын дараах үнэлгээг системтэйгээр өгөх боломжтой.</p>
+                <p>{t("A mobile app for intercity travel in Mongolia. Drivers create trips, passengers search for seats, send requests, get confirmations, and leave post-trip ratings systematically.")}</p>
                 <div className="feature-list">
-                  <div className="feature-item">Аялал үүсгэх, хайх, суудал сонгох, шууд баталгаажуулах болон хүсэлтээр батлуулах урсгал</div>
-                  <div className="feature-item">Google, Facebook, имэйл нэвтрэлт, баталгаажуулалт, нууц үг сэргээх логик</div>
-                  <div className="feature-item">Realtime чат, push notification, жолооч ба зорчигчийн хоёр талт үнэлгээ</div>
-                  <div className="feature-item">Wallet, subscription, машин удирдлага, Монгол ба Англи хэлний орчуулгын бүтэц</div>
+                  <div className="feature-item">{t("Trip creation, search, seat selection, instant confirmation and request-based approval flow")}</div>
+                  <div className="feature-item">{t("Google, Facebook, email login, verification, and password recovery logic")}</div>
+                  <div className="feature-item">{t("Realtime chat, push notifications, two-way driver and passenger rating")}</div>
+                  <div className="feature-item">{t("Wallet, subscription, car management, Mongolian and English translation structure")}</div>
                 </div>
               </article>
 
               <article className="project-card">
                 <div className="project-top">
                   <div className="project-brand">
-                    <Image src="/yavii-logo.png" alt="Yavii backend тэмдэглэл" width={68} height={68} />
+                    <Image src="/yavii-logo.png" alt="Yavii backend" width={68} height={68} />
                     <div>
-                      <div className="eyebrow">Системийн цөм</div>
-                      <h3>Yavii backend платформ</h3>
+                      <div className="eyebrow">{t("System core")}</div>
+                      <h3>{t("Yavii backend platform")}</h3>
                     </div>
                   </div>
-                  <span className="tag">Backend</span>
+                  <span className="tag">{t("Backend")}</span>
                 </div>
-                <p>Fastify болон Prisma дээр босгосон backend давхарга. Энэ нь аппын бүх бизнес логик, өгөгдлийн урсгал, notification, websocket, upload, auth, rate limit, тохиргоо болон статик мэдээллийн суурь болж ажиллана.</p>
+                <p>{t("A backend layer built on Fastify and Prisma. It serves as the foundation for all business logic, data flow, notifications, websocket, uploads, auth, rate limiting, config, and static data.")}</p>
                 <div className="feature-list">
-                  <div className="feature-item">Аялал, хүсэлт, машин, хэрэглэгч, wallet, мессеж, үнэлгээний endpoint бүтэц</div>
-                  <div className="feature-item">WebSocket болон push fallback ашигласан реалтайм харилцааны үндэс</div>
-                  <div className="feature-item">Cron job, upload storage, security middleware, rate limiting зэрэг ажиллагааны суурь хамгаалалт</div>
-                  <div className="feature-item">Апп дэлгүүр рүү гаргах түвшний цэгцтэй API ба хөгжүүлэлтийн бүтэц</div>
+                  <div className="feature-item">{t("Trip, request, car, user, wallet, message, rating endpoint structure")}</div>
+                  <div className="feature-item">{t("Realtime communication foundation using WebSocket and push fallback")}</div>
+                  <div className="feature-item">{t("Cron jobs, upload storage, security middleware, rate limiting — operational safety foundation")}</div>
+                  <div className="feature-item">{t("App-store-ready clean API and development structure")}</div>
                 </div>
               </article>
             </div>
@@ -170,26 +174,26 @@ export default function Home() {
           <div className="container">
             <div className="section-head">
               <div>
-                <div className="eyebrow">Ажиллах арга</div>
-                <h2>Хурдан биш, зөв дарааллаар.</h2>
+                <div className="eyebrow">{t("How we work")}</div>
+                <h2>{t("Not fast, but in the right order.")}</h2>
               </div>
-              <p>Сайн landing page эсвэл аппын гоё дэлгэц дангаараа хангалтгүй. Дотор нь ямар логик урсах, хэрэглэгч ямар шийдвэр гаргах, дараа нь систем яаж тэлэхийг эхнээс нь тооцож хийдэг.</p>
+              <p>{t("A good landing page or nice app screen alone isn't enough. How logic flows inside, what decisions the user makes, how the system scales later — all calculated from the start.")}</p>
             </div>
             <div className="timeline">
               <article className="timeline-step">
-                <strong>Алхам 1</strong>
-                <h3>Асуудлыг яг тодорхойлох</h3>
-                <p>Хэнд зориулж байгаа, хэрэглэгч яг ямар мөчид энэ бүтээгдэхүүнийг хэрэглэх вэ, ямар үндсэн урсгал эхлээд ажиллах ёстойг тогтооно.</p>
+                <strong>{t("Step 1")}</strong>
+                <h3>{t("Define the problem precisely")}</h3>
+                <p>{t("Who it's for, exactly when users will use this product, and what core flows must work first.")}</p>
               </article>
               <article className="timeline-step">
-                <strong>Алхам 2</strong>
-                <h3>Цөм логикийг босгох</h3>
-                <p>Auth, өгөгдөл, API, дэлгэц хоорондын урсгал, realtime төлөв, permission, үндсэн бизнес дүрмийг найдвартайгаар төвлөрүүлж байгуулна.</p>
+                <strong>{t("Step 2")}</strong>
+                <h3>{t("Build the core logic")}</h3>
+                <p>{t("Auth, data, API, inter-screen flow, realtime state, permissions, and core business rules — reliably centered and built.")}</p>
               </article>
               <article className="timeline-step">
-                <strong>Алхам 3</strong>
-                <h3>Туршлагыг сайжруулах</h3>
-                <p>UI өнгөлөх, текстээ цэгцлэх, хэрэглэгчийн эргэлзэх цэгийг багасгах, deployment болон дараагийн өсөлтөд бэлдэх ажлыг дараагийн шатанд гүйцээнэ.</p>
+                <strong>{t("Step 3")}</strong>
+                <h3>{t("Refine the experience")}</h3>
+                <p>{t("Polish the UI, clean up copy, reduce user hesitation points, and prepare for deployment and next-stage growth.")}</p>
               </article>
             </div>
           </div>
@@ -199,13 +203,13 @@ export default function Home() {
           <div className="container">
             <div className="contact-card">
               <div>
-                <div className="eyebrow">Холбоо барих</div>
-                <h2>Шинэ бүтээгдэхүүн, сайт, апп эсвэл backend систем ярилцахад бэлэн.</h2>
-                <p>Хэрэв та санаагаа зөв бүтэцтэйгээр гаргах, эсвэл байгаа системээ илүү чанартай болгохыг хүсэж байвал холбогдоно уу. Bold Core LLC нь код, логик, хэрэглэгчийн туршлагыг нэгтгэсэн бодит шийдэл дээр ажиллана.</p>
+                <div className="eyebrow">{t("Get in touch")}</div>
+                <h2>{t("Ready to discuss a new product, site, app, or backend system.")}</h2>
+                <p>{t("If you want to structure your idea properly or improve an existing system, reach out. Bold Core LLC works on real solutions that combine code, logic, and user experience.")}</p>
               </div>
               <div className="contact-meta">
                 <a href="mailto:bold.core.soft@gmail.com">bold.core.soft@gmail.com</a>
-                <span>Имэйлээр санал, хамтын ажиллагааны хүсэлт илгээнэ үү</span>
+                <span>{t("Send proposals and collaboration requests by email")}</span>
               </div>
             </div>
           </div>
@@ -213,7 +217,7 @@ export default function Home() {
       </main>
 
       <footer className="footer">
-        <div className="container">© 2026 Bold Core LLC. Одоогийн таних тэмдэгт Yavii логог ашиглаж буй хувилбар.</div>
+        <div className="container">© 2026 Bold Core LLC. {t("Current version uses Yavii logo as brand mark.")}</div>
       </footer>
     </div>
   );
