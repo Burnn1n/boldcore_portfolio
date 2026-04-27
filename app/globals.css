@@ -138,6 +138,51 @@ h1 { margin: 18px 0 14px; font-size: clamp(42px, 7vw, 80px); line-height: 0.95; 
 .backend-card h3 { margin: 0 0 6px; font-size: 20px; letter-spacing: -0.03em; }
 .backend-card p  { margin: 0; color: var(--muted); font-size: 14px; }
 
+/* ── Particle Section ── */
+.particle-section { padding: 0 0 24px; }
+
+.particle-stage {
+  position: relative;
+  height: 58vh;
+  min-height: 420px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.particle-overlay {
+  position: absolute;
+  bottom: 36px;
+  left: 40px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.particle-label {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.particle-title {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 4vw, 52px);
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.particle-sub {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.particle-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip--dim { background: rgba(255,255,255,0.04); color: var(--muted); border-color: rgba(255,255,255,0.08); }
+
 /* ── Contact ── */
 .contact-slim   { padding: 24px 0 64px; }
 .contact-card   { padding: 40px; border-radius: var(--radius-xl); border: 1px solid var(--line); background: linear-gradient(135deg, rgba(53,208,255,0.1), rgba(255,255,255,0.02)); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
