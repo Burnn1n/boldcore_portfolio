@@ -55,14 +55,14 @@ export default function AppShowcase() {
         <div className="container">
           <div className="showcase-head">
             <div className="eyebrow">Yavii — {t("Web platform")}</div>
-            <p className="showcase-sub">yavii.online</p>
+            <p className="showcase-sub">yavii.app</p>
             <a
               className="showcase-link"
-              href="https://yavii.online/"
+              href="https://yavii.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              yavii.online →
+              yavii.app →
             </a>
           </div>
 
@@ -73,7 +73,7 @@ export default function AppShowcase() {
                   <span className="browser-dot" />
                   <span className="browser-dot" />
                   <span className="browser-dot" />
-                  <span className="browser-url">yavii.online</span>
+                  <span className="browser-url">yavii.app</span>
                 </div>
                 <Image
                   src={src}

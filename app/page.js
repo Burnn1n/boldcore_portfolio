@@ -153,7 +153,7 @@ function BrowserCarousel() {
               <div style={{ borderRadius: "10px", overflow: "hidden", border: "1px solid #1a2e3a", boxShadow: "0 16px 40px rgba(0,0,0,0.55)" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "6px", padding: "8px 14px", background: "#0d1e28", borderBottom: "1px solid #1a2e3a" }}>
                   {[0,1,2].map(k => <div key={k} style={{ width: "9px", height: "9px", borderRadius: "50%", background: "#1e3040" }} />)}
-                  <span style={{ marginLeft: "8px", fontSize: "10px", color: "#9fc1c8", fontFamily: "monospace" }}>yavii.online</span>
+                  <span style={{ marginLeft: "8px", fontSize: "10px", color: "#9fc1c8", fontFamily: "monospace" }}>yavii.app</span>
                 </div>
                 <Image src={src} alt="" width={700} height={420} unoptimized style={{ display: "block", width: "100%", height: "auto", pointerEvents: "none" }} />
               </div>
@@ -239,7 +239,7 @@ function SlideWeb() {
       <div style={{ flex: "0 0 auto", maxWidth: "340px" }}>
         <p style={{ margin: "0 0 14px", fontSize: "11px", fontWeight: "800", letterSpacing: "0.16em", textTransform: "uppercase", color: "#86ef52" }}>02 / Web</p>
         <h2 style={{ margin: "0 0 14px", fontSize: "clamp(36px, 4.5vw, 58px)", fontWeight: "900", lineHeight: "0.94", letterSpacing: "-0.05em", color: "#ecf7f8" }}>
-          yavii.online
+          yavii.app
         </h2>
         <p style={{ margin: "0 0 22px", color: "#9fc1c8", fontSize: "14px", lineHeight: "1.6" }}>
           Full web platform for the same service. SSR, SEO-ready. Shares the same Fastify backend with the mobile app.
@@ -254,7 +254,7 @@ function SlideWeb() {
         <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "24px" }}>
           {["Next.js", "React", "REST API", "Railway"].map(t => <Chip key={t} label={t} />)}
         </div>
-        <a href="https://yavii.online/" target="_blank" rel="noopener noreferrer" style={{
+        <a href="https://yavii.app/" target="_blank" rel="noopener noreferrer" style={{
           display: "inline-flex", alignItems: "center", padding: "11px 20px", borderRadius: "999px",
           fontWeight: "800", fontSize: "12px", background: "rgba(134,239,82,0.08)",
           border: "1px solid rgba(134,239,82,0.22)", color: "#86ef52", textDecoration: "none",
